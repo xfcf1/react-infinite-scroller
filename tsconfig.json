@@ -1,25 +1,22 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "dist",
+    "outDir": "libs",
     "sourceMap": false,
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "target": "es5",
+    "module": "CommonJS",
     "allowJs": false,
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "experimentalDecorators": true,
-    "resolveJsonModule": true,
     "esModuleInterop": true,
     "removeComments": false,
     "jsx": "react",
-    "lib": ["esnext", "dom"],
-    "types": ["jest", "node"],
-    "rootDir": ".",
+    "lib": ["es6", "dom"],
+    "rootDir": "src",
     "paths": {}
   },
-  "include": []
+  "exclude": ["node_modules", "libs"]
 }

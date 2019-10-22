@@ -93,14 +93,18 @@ const Scroller = (props: IScroller) => {
     }
   }
 
-  const topHolderHeight = start * step
-  const bottomHolderHeight = (len - end) * step
+  const topHolderHeight = start * itemHeight
+  const bottomHolderHeight = (len - end) * itemHeight
 
   const fragments = data.slice(start, end)
   const list = fragments.map((item: any) => itemCreater(item))
 
   return (
-    <div style={{ ...styles }} className={className} id={rootId}>
+    <div
+      style={{ height, overflow: 'auto', ...styles }}
+      className={className}
+      id={rootId}
+    >
       <div style={{ height: topHolderHeight, minHeight: 1 }} id={topHolderId} />
       {list}
       <div

@@ -7,6 +7,7 @@
     "test": "test"
   },
   "scripts": {
+    "build": "tsc -p tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,7 +27,9 @@
   "homepage": "https://github.com/xfcf1/react-infinite-scroller#readme",
   "dependencies": {
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "tslib": "^1.10.0",
+    "typescript": "^3.6.4"
   },
   "devDependencies": {
     "@types/react": "^16.9.9",
