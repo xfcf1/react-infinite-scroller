@@ -1,0 +1,35 @@
+{
+  "name": "react-infinite-scroller",
+  "version": "1.0.0",
+  "description": "react react-component infinite-scroll",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xfcf1/react-infinite-scroller.git"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "infinite-scroll"
+  ],
+  "author": "xfcf1",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xfcf1/react-infinite-scroller/issues"
+  },
+  "homepage": "https://github.com/xfcf1/react-infinite-scroller#readme",
+  "dependencies": {
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.9",
+    "@types/react-dom": "^16.9.2"
+  }
+}
