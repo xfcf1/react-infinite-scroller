@@ -1,0 +1,24 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+.wrap {
+  background: #e2e2e2;
+}
+
+p {
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+
+p:nth-child(2n) {
+  background: rgb(69, 186, 255);
+}
