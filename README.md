@@ -1,5 +1,7 @@
 # react-infinite-scroller
 
+![image](https://raw.githubusercontent.com/xfcf1/react-infinite-scroller/master/game.gif)
+
 ## Installation
 
 `npm i ob-infinite-scroller`
