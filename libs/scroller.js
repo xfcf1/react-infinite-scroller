@@ -22,9 +22,10 @@ var React = __importStar(require("react"));
 var useState = React.useState, useEffect = React.useEffect;
 var Scroller = function (props) {
     var itemHeight = props.itemHeight, height = props.height, data = props.data, styles = props.styles, className = props.className, itemCreater = props.itemCreater, rootId = props.rootId;
+    var $rootId = rootId || 'scroller';
     var observer;
-    var topHolderId = rootId + "_top_holder";
-    var bottomHolderId = rootId + "_bottom_holder";
+    var topHolderId = $rootId + "_top_holder";
+    var bottomHolderId = $rootId + "_bottom_holder";
     var len = data.length;
     var pageSize = Math.ceil(height / itemHeight) * 2;
     var step = Math.ceil(pageSize / 2);
@@ -39,7 +40,7 @@ var Scroller = function (props) {
         };
     }, [start, end]);
     var installObserver = function () {
-        var rootDom = document.getElementById(rootId);
+        var rootDom = document.getElementById($rootId);
         observer = new IntersectionObserver(obCallback, { root: rootDom });
         var topHolderDom = document.getElementById(topHolderId);
         var bottomHolderDom = document.getElementById(bottomHolderId);
@@ -124,16 +125,8 @@ var Scroller = function (props) {
     var topHolderHeight = start * itemHeight;
     var bottomHolderHeight = (len - end) * itemHeight;
     var fragments = data.slice(start, end);
-    var list = fragments.map(function (item, index) {
-        if (index === 0) {
-            return (React.createElement("div", { "data-key": item, key: index }, itemCreater(item)));
-        }
-        else if (index === fragments.length - 1) {
-            return (React.createElement("div", { "data-key": item, key: index }, itemCreater(item)));
-        }
-        return (React.createElement("div", { "data-key": item, key: index }, itemCreater(item)));
-    });
-    return (React.createElement("div", { style: __assign({ height: height, overflow: 'auto' }, styles), className: className, id: rootId },
+    var list = fragments.map(function (item) { return itemCreater(item); });
+    return (React.createElement("div", { style: __assign({ height: height, overflow: 'auto' }, styles), className: className, id: $rootId },
         React.createElement("div", { style: { height: topHolderHeight, minHeight: 1 }, id: topHolderId }),
         list,
         React.createElement("div", { style: { height: bottomHolderHeight, minHeight: 1 }, id: bottomHolderId })));
