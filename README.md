@@ -1,6 +1,6 @@
 # react-infinite-scroller
 
-![image](https://raw.githubusercontent.com/xfcf1/react-infinite-scroller/master/game.gif)
+![image](https://raw.githubusercontent.com/xfcf1/react-infinite-scroller/master/image.gif)
 
 ## Installation
 
