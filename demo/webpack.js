@@ -48,7 +48,7 @@ const config = {
     })
   ],
   devServer: {
-    port: 8000,
+    port: 8888,
     compress: true,
     historyApiFallback: true,
     hot: true

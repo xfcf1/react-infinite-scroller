@@ -6,7 +6,7 @@ import Scroller from '../libs/scroller'
 const App = () => {
   const height = 400
   const itemHeight = 60
-  const data = Array.from({ length: 1000 }).map((_, index) => index + 1)
+  const data = [...Array(100).keys()]
   const itemCreater = index => (
     <p key={index} onClick={() => console.log(index)}>
       {index}

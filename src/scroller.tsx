@@ -25,17 +25,20 @@ const Scroller = (props: IScroller) => {
   const topHolderId = `${rootId}_top_holder`
   const bottomHolderId = `${rootId}_bottom_holder`
   const len = data.length
-  const step = Math.ceil(height / itemHeight)
+  const pageSize = Math.ceil(height / itemHeight) * 2
+  const step = Math.ceil(pageSize / 2)
   const [start, setStart] = useState(0)
-  const [end, setEnd] = useState(step * 2)
+  const [end, setEnd] = useState(pageSize)
+  const [timer, setTimer] = useState<any>(0)
 
   useEffect(() => {
     installObserver()
+    checkViewport()
 
     return () => {
       uninstallObserver()
     }
-  }, [data.length, start, end])
+  }, [start, end])
 
   const installObserver = () => {
     const rootDom = document.getElementById(rootId)
@@ -68,36 +71,82 @@ const Scroller = (props: IScroller) => {
       if (entry.target.id === topHolderId) {
         // top
         if (entry.isIntersecting) {
-          let newStart = start - step
-          let newEnd = end - step
-          if (start <= 0) {
-            newStart = 0
-            newEnd = step * 2
-          }
-          setStart(newStart)
-          setEnd(newEnd)
+          minusStep()
         }
       } else if (entry.target.id === bottomHolderId) {
         // bottom
         if (entry.isIntersecting) {
-          let newStart = start + step
-          let newEnd = end + step
-          if (end >= len) {
-            newStart = start
-            newEnd = len + 1
-          }
-          setStart(newStart)
-          setEnd(newEnd)
+          addStep()
         }
       }
     }
+  }
+  const minusStep = (num: number = step) => {
+    let newStart = start - num
+    let newEnd = end - num
+    if (start <= 0) {
+      newStart = 0
+      newEnd = pageSize
+    }
+    setStart(newStart)
+    setEnd(newEnd)
+  }
+  const addStep = (num: number = step) => {
+    let newStart = start + num
+    let newEnd = end + num
+    if (newEnd >= len) {
+      newStart = start
+      newEnd = len
+    }
+    setStart(newStart)
+    setEnd(newEnd)
+  }
+  const checkViewport = () => {
+    clearTimeout(timer)
+    setTimer(
+      setTimeout(() => {
+        const topHolderDom = document.getElementById(topHolderId)
+        const bottomHolderDom = document.getElementById(bottomHolderId)
+        if (topHolderDom && bottomHolderDom) {
+          let num: number = 0
+          const topOffset = topHolderDom.getBoundingClientRect().bottom
+          const bottomOffset = bottomHolderDom.getBoundingClientRect().top
+          if (topOffset > 0) {
+            num = Math.ceil(topOffset / itemHeight)
+            minusStep(num)
+          } else if (bottomOffset < 0) {
+            num = Math.ceil(Math.abs(bottomOffset) / itemHeight)
+            addStep(num)
+          }
+        }
+      }, 200)
+    )
   }
 
   const topHolderHeight = start * itemHeight
   const bottomHolderHeight = (len - end) * itemHeight
 
   const fragments = data.slice(start, end)
-  const list = fragments.map((item: any) => itemCreater(item))
+  const list = fragments.map((item: any, index: number) => {
+    if (index === 0) {
+      return (
+        <div data-key={item} key={index}>
+          {itemCreater(item)}
+        </div>
+      )
+    } else if (index === fragments.length - 1) {
+      return (
+        <div data-key={item} key={index}>
+          {itemCreater(item)}
+        </div>
+      )
+    }
+    return (
+      <div data-key={item} key={index}>
+        {itemCreater(item)}
+      </div>
+    )
+  })
 
   return (
     <div
