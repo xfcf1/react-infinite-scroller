@@ -16,7 +16,6 @@ const App = () => {
     <div className="wrap">
       <p>React Infinite Scroller Demo</p>
       <Scroller
-        rootId={'scroller'}
         height={height}
         itemHeight={itemHeight}
         data={data}

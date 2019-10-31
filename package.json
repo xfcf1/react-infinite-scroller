@@ -1,8 +1,8 @@
 {
-  "name": "react-infinite-scroller",
+  "name": "ob-infinite-scroller",
   "version": "1.0.0",
   "description": "react react-component infinite-scroll",
-  "main": "index.js",
+  "main": "libs/scroller.js",
   "directories": {
     "test": "test"
   },
@@ -18,7 +18,8 @@
   "keywords": [
     "react",
     "react-component",
-    "infinite-scroll"
+    "infinite-scroll",
+    "intersection-observer"
   ],
   "author": "xfcf1",
   "license": "MIT",

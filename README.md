@@ -1,13 +1,19 @@
 # react-infinite-scroller
 
-### install
+## Installation
 
-`npm install`
+`npm i ob-infinite-scroller`
 
-### useage
+OR
+
+`yarn add ob-infinite-scroller`
+
+you can run demo with `npm start`
+
+## How to use
 
 ```js
-import Scroller from '../libs/scroller'
+import Scroller from 'ob-infinite-scroller'
 
 const App = () => {
   const height = 400
@@ -18,11 +24,11 @@ const App = () => {
       {index}
     </p>
   )
+
   return (
     <div className="wrap">
       <p>React Infinite Scroller Demo</p>
       <Scroller
-        rootId={'scroller'}
         height={height}
         itemHeight={itemHeight}
         data={data}
@@ -32,3 +38,15 @@ const App = () => {
   )
 }
 ```
+
+## Props
+
+| Name        | Type            | Default | Description              |
+| ----------- | --------------- | ------- | ------------------------ |
+| itemHeight  | number          | 0       | item's height            |
+| height      | number          | 0       | wrapper's height         |
+| data        | any[]           | []      | your data array          |
+| itemCreater | React.Component | void    | generate items with data |
+| rootId      | string          | -       | -                        |
+| styles      | style object    | -       | -                        |
+| className   | string          | -       | -                        |
