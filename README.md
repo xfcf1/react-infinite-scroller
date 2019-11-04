@@ -15,18 +15,19 @@ you can run demo with `npm start`
 ## How to use
 
 ```js
+import React from 'react'
+import * as ReactDOM from 'react-dom'
 import Scroller from 'ob-infinite-scroller'
 
 const App = () => {
   const height = 400
   const itemHeight = 60
-  const data = Array.from({ length: 1000 }).map((_, index) => index + 1)
+  const data = [...Array(100).keys()]
   const itemCreater = index => (
     <p key={index} onClick={() => console.log(index)}>
       {index}
     </p>
   )
-
   return (
     <div className="wrap">
       <p>React Infinite Scroller Demo</p>
@@ -39,6 +40,8 @@ const App = () => {
     </div>
   )
 }
+
+ReactDOM.render(<App />, document.getElementById('app'))
 ```
 
 ## Props
